@@ -39,19 +39,25 @@ export function extractDataFromText(text: string): DiplomaData {
   // 6. ФИО (ищем три слова с большой буквы подряд)
   const fioMatch = cleanText.match(/([А-Я][а-яё]+)\s([А-Я][а-яё]+)\s([А-Я][а-яё]+)/);
 
+  const directorMatch = text.match(/Директор:\s*([А-Яа-яёЁ\s.]+)/i);
+  // Поиск Заместителя
+  const deputyMatch = text.match(/Заместитель:\s*([А-Яа-яёЁ\s.]+)/i);
+  // Поиск Классного руководителя
+  const leaderMatch = text.match(/руководитель:\s*([А-Яа-яёЁ\s.]+)/i);
+
   return {
     series: serialMatch?.[1]?.toUpperCase() || "",
     number: serialMatch?.[2] || "",
     lastName: fioMatch?.[1] || "",
     firstName: fioMatch?.[2] || "",
     middleName: fioMatch?.[3] || "",
-    gradYear: yearMatch?.[1] || "",
-    schoolName: "Казахская академия спорта и туризма",
+    gradYear: yearMatch?.[1] || "2020",
+    schoolName: "Казахская академия спорта и туризма",                
     issueDate: dateMatch?.[0] || "",
     city: "г. Алматы", // Обычно для этого вуза город не меняется
     regNumber: regNumMatch?.[2] || "",
-    directorName: "", // Эти поля лучше оставить для ручного ввода
-    deputyName: "",
-    classLeaderName: ""
+    directorName: directorMatch?.[1]?.trim() || "", 
+    deputyName: deputyMatch?.[1]?.trim() || "",
+    classLeaderName: leaderMatch?.[1].trim() || ""
   };
 }

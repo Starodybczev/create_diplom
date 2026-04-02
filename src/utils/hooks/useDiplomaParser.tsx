@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { extractDataFromText, type DiplomaData } from '../data/dataExtractor';
 
 
-export function useDiplomaParser(rawText: string | undefined) {
+export function useDiplomaParser(initialData?: DiplomaData) {
     const [data, setData] = useState<DiplomaData>({
         series: "",
         number: "",
@@ -23,11 +23,10 @@ export function useDiplomaParser(rawText: string | undefined) {
 
     // Автоматически парсим, как только пришел текст из файла
     useEffect(() => {
-        if (rawText) {
-            const result = extractDataFromText(rawText);
-            setData(result);
+        if (initialData) {
+            setData(initialData);
         }
-    }, [rawText]);
+    }, [initialData]);
 
     // Метод для ручного обновления поля (если парсер ошибся)
     const updateField = useCallback((field: keyof DiplomaData, value: string) => {
