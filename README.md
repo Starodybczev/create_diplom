@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# 🎓 Diploma Generator App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An intelligent web application designed to automate the creation and management of student diploma documents. Simply upload student data in various formats, edit details in real-time, and generate ready-to-print documents.
 
-Currently, two official plugins are available:
+---
+## Screen 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Frontend:** [React](https://reactjs.org/) (TypeScript)
+* **Styling:** [SCSS](https://sass-lang.com/) / CSS Modules
+* **Markup:** HTML5 & Semantic CSS
+* **File Handling:** [Mammoth.js](https://github.com/mwilliamson/js-mammoth) (DOCX), [PDF.js](https://mozilla.github.io/pdf.js/) (PDF), and Native JSON parsing.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Key Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **Multi-Format Import:** Drag & drop `.docx`, `.json`, or `.pdf` files to automatically extract student lists.
+* **Interactive Editor:** Seamlessly edit student names, thesis topics, and grades before final generation.
+* **Data Management:** Easily add new records manually, update existing ones, or delete specific entries.
+* **Smart Export:** Download individual generated diplomas or bulk export processed data.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Project Structure (`src`)
+
+The project follows a modular architecture for scalability and clean code:
+
+```text
+src/
+├── assets/             # Images, icons, and static fonts
+├── components/         # Reusable UI components (Modals, Tables, Forms)
+├── styles/             # Global SCSS files, variables, and mixins
+└── utils/              # Core business logic
+    ├── hooks/          # Custom React hooks (e.g., useParser, useLocalStorage)
+    ├── func/           # Pure helper functions (text processing, date formatting)
+    └── const/          # Global constants, API configs, and TS interfaces
+├── App.tsx             # Root component & Routing
+└── main.tsx            # Application entry point
+```
+---
+## Getting Started
+```bash
+git clone [https://github.com/your-username/diploma-generator.git](https://github.com/your-username/diploma-generator.git)
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
+## How It Works
+Upload: Provide a file containing student information.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Process: The app parses the file via utils/func logic and displays the data in an editable grid.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Refine: Correct any typos or modify specific fields directly in the UI.
+
+Download: Generate and save the final diploma document for the selected students.
