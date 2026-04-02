@@ -48,17 +48,21 @@ export default function FileReadData() {
                 <h3>{firstName} {lastName} {middleName} </h3>
                 <p>{series}: №{number}</p>
                 <p> номер {regNumber} год {gradYear}</p>
-                <button onClick={() => generateDiploma(student)}>download</button>
-                <button onClick={() => delateUser(index)}>X</button>
-                <button onClick={() => handleUpdate(index)}>update</button>
+                <div className="buttons_block">
+                    <button className="button_download" onClick={() => generateDiploma(student)}>download</button>
+                    <button className="btn_delate" onClick={() => delateUser(index)}>X</button>
+                    <button className="btn_update" onClick={() => handleUpdate(index)}>update</button>
+                </div>
             </div>
         )
     })
 
 
     return (
-        <div>
-            <input type="file" onChange={handleWordChange} />
+        <div className="block_all">
+            <div className="input_block_file_types">
+                <input className="btn_input_type_file" type="file" onChange={handleWordChange} />
+            </div>
             <div className="card_box">{elem}</div>
 
 

@@ -13,7 +13,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
         <div className={`modal-overlay ${isOpen ? "active" : ""}`}>
             <div className={`modal ${isOpen ? "active" : "not_active"}`}>
                 {children}
-                <button onClick={onClose}>close</button>
+                <button className="modal_btn_close" onClick={onClose}>close</button>
             </div>
         </div>
     )
