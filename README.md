@@ -4,7 +4,7 @@ An intelligent web application designed to automate the creation and management 
 
 ---
 ## Screen 
-<div aligment="center">
+<div align="center">
     <img src="src/assets/photo_update_app.png" width="400px"/>
     <img src="src/assets/app_diplome_screen.png" width="400px"/>
 </div>
