@@ -4,8 +4,10 @@ An intelligent web application designed to automate the creation and management 
 
 ---
 ## Screen 
-<img src="src/assets/photo_update_app.png" width="200px"/>
-<img src="src/assets/app_diplome_screen.png" width="200px"/>
+<div aligment="center">
+    <img src="src/assets/photo_update_app.png" width="400px"/>
+    <img src="src/assets/app_diplome_screen.png" width="400px"/>
+</div>
 ---
 
 ## 🛠 Tech Stack
